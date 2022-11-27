@@ -39,7 +39,6 @@ import { CmsAuthRepository } from './cms.auth.repository'
             usernameField: 'username',
             passwordField: 'password',
             httpAdaptorType: 'express',
-            useLocalAuth: true,
           }
         },
         inject: [ConfigService],
@@ -55,4 +54,5 @@ import { CmsAuthRepository } from './cms.auth.repository'
   ],
   providers: [AfterLoggedInEventHandler],
 })
-export class AuthIntegrationModule {}
+export class AuthIntegrationModule {
+}

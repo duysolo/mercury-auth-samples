@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AuthUserInput {
+  password: String!
+  username: String!
+}
+
+type AuthUserModel {
+  createdAt: Date
+  email: String
+  firstName: String!
+  id: ID!
+  lastName: String
+  status: RecordStatusEnum
+  updatedAt: Date
+  username: String!
+}
+
+type AuthUserResponse {
+  token: AuthUserToken!
+  userData: AuthUserModel!
+}
+
+type AuthUserToken {
+  accessToken: String!
+  expiryDate: Date!
+  refreshToken: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type LogoutModelResponse {
+  status: Boolean!
+}
+
+type Query {
+  authenticate(user: AuthUserInput!): AuthUserResponse!
+  logout: LogoutModelResponse!
+  profile: AuthUserModel!
+}
+
+enum RecordStatusEnum {
+  ACTIVE
+  DELETED
+  IN_ACTIVE
+}

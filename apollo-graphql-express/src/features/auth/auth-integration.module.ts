@@ -7,20 +7,24 @@ import { Module } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { CqrsModule } from '@nestjs/cqrs'
 import { AfterLoggedInEventHandler } from './after-logged-in.event-handler'
+import { AfterLoggedOutEventHandler } from './after-logged-out.event-handler'
 import { CmsAuthRepository } from './cms.auth.repository'
+import { AuthenticateQuery } from './resolvers/authenticate.query'
+import { LogOutQuery } from './resolvers/log-out.query'
+import { ProfileQuery } from './resolvers/profile.query'
 
 @Module({
   imports: [
     AuthModule.forRootAsync({
       imports: [],
-      useLocalAuth: true,
+      useLocalAuth: false,
       definitions: {
         useFactory: (config: ConfigService) => {
           return {
             basicAuth: {
               username: config.get('BASIC_AUTH_USER') || '',
               password: config.get('BASIC_AUTH_PASSWORD') || '',
-              realm: 'Mobile API - V2',
+              realm: 'Mercury Labs - Nest Auth',
             },
             jwt: {
               secret: config.get('AUTH_JWT_SECRET') || '',
@@ -52,7 +56,13 @@ import { CmsAuthRepository } from './cms.auth.repository'
     }),
     CqrsModule,
   ],
-  providers: [AfterLoggedInEventHandler],
+  providers: [
+    AuthenticateQuery,
+    ProfileQuery,
+    LogOutQuery,
+
+    AfterLoggedInEventHandler,
+    AfterLoggedOutEventHandler,
+  ],
 })
-export class AuthIntegrationModule {
-}
+export class AuthIntegrationModule {}
