@@ -20,7 +20,10 @@ import { DateScalar } from './graphql/scalars'
         return {
           debug: config.get('GRAPHQL_DEBUG') === 'true',
           playground: config.get('GRAPHQL_PLAYGROUND') === 'true',
-          autoSchemaFile: join(process.cwd(), 'src/generated/schema.gql'),
+          autoSchemaFile: join(
+            process.cwd(),
+            'src/graphql/generated/schema.gql'
+          ),
           sortSchema: true,
           fieldResolverEnhancers: ['interceptors'] as Enhancer[],
           autoTransformHttpErrors: true,
