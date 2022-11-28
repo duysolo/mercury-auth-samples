@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql'
-import { NullablePartial } from '../../../shared/graphql/domain/definitions'
+import { NullablePartial } from '../../typings'
 
 @ObjectType()
 export class LogoutModelResponse {

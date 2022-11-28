@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
 import { IsEmail } from 'class-validator'
-import { Nullable } from '../../../shared/graphql/domain/definitions'
+import { Nullable } from '../../typings'
 import { RecordStatusEnum } from '../enums/record-status.enum'
 
 @ObjectType()
