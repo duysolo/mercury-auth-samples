@@ -6,7 +6,7 @@ import { join } from 'path'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { AuthIntegrationModule } from './auth/auth-integration.module'
-import { DateScalar } from './graphql/domain/scalars'
+import { DateScalar } from './graphql/scalars'
 
 @Module({
   imports: [
